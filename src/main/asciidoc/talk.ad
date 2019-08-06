@@ -1,0 +1,87 @@
+= Introducción a los Componentes de Arquitectura de Android
+:icons: font
+:twitter-tag: UDE
+:conference-tag:
+:talk-tag: Intro Arch Components
+:linkattrs:
+
+include::footer.ad[]
+
+[NOTE.speaker]
+====
+
+Contenido de la presentación:
+
+* ¿Qué son los componentes de Arquitectura de Android?
+* ¿Cuál es la arquitectura recomendada para aplicaciones Android?
+* Lifecycle-aware
+* Live Data
+* Room
+
+====
+
+== !
+image::jetpack-hero.svg[background, size=auto]
+
+== ¿Qué son los componentes de arquitectura?
+
+Son una colección de librerías con el objetivo de ayudar al desarrollador a diseñar aplicaciones robustas, testeables y mantenibles. Es parte del proyecto Jetpack.
+
+== Complejidad de las aplicaciones Android
+
+A diferencia de las aplicaciones de escritorio que poseen normalmente uno solo punto de entrada, las aplicaciones Android tienen muchos componentes como Activities, Fragmentos, Services, Content Providers y Broadcast Receivers.
+
+== Compartir una foto en una red social
+
+1.- La aplicación invoca un Intent de la cámara. El SO invoca la cámara y la aplicación de la red social queda en segundo plano.
+
+2.- La cámara puede invocar otros Intents como por ejemplo la selección de archivos.
+
+3.- Eventualmente la aplicación regresa a la aplicación de la red social.
+
+== Pero ...
+
+== El proceso puede ser interrumpido por:
+
+* Una llamada
+* Una notificación.
+
+El usuario espera que luego de la interrupción la aplicación continúe donde quedo.
+
+**Este flujo debe ser manejado correctamente**
+
+== Además
+
+== Las aplicaciones se ejecutan en dispositivos móviles
+
+* Con recursos limitados
+* La aplicación puede ser detenida en cualquier momento (usuario o SO que requiere memoria para ejecutar otra)
+
+**Por ello no se debe almacenar datos de la aplicación o estado en los componentes de la aplicación**
+
+== ¿Cuál es la arquitectura recomendada para aplicaciones Android?
+
+1. Separación de intereses (Separation of Concerns SoC)
+
+2. Manejar la UI desde el modelo
+
+== Separación de intereses
+
+Si bien es común caer en el error de escribir todo el código en las Activities o Fragmentos, la idea de este principio es que estás clases solo tengan lógica de UI y eventos del sistema operativo.
+
+**Si mantenemos estas clases lo más ligeras posibles nos evitaran problemas de manejo de ciclo de vida de los componentes.**
+
+[NOTE.speaker]
+====
+Se debe considerar que no somos dueños de las implementaciones que hagamos de las Activities o los Fragmentos, estas solo actúan como contratos entre el SO y nuestra aplicación. El SO puedes destruirlas en cualquier momento debido a interacciones del usuario o condiciones de baja memoria. Por ello, para proveer una buena experiencia al usuario y asegurar el mantenimiento de la aplicación es mejor minimizar las dependencia a ellas.
+====
+
+== Manejar la UI desde el modelo
+
+
+
+
+
+
+
+include::self.ad[]
