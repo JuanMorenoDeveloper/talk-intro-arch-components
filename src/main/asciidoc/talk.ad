@@ -126,4 +126,17 @@ Room abstrae los detalles de implementación asociados al trabajo con consultas 
 Room permite observar cambios en los datos de la base de datos, incluidas las colecciones y consultas join, exponiendo dichos cambios utilizando objetos LiveData. Maneja explícitamente restricciones de ejecución de threads, por ejemplo acceder al almacenamiento en el thread principal.
 ====
 
+== Mejores prácticas
+
+* Evitar designar los entrypoint de su aplicación (Activities, Services, Broadcast Receivers), como fuentes de datos.
+* Crear límites de responsabilidad entre los módulos de la aplicación.
+* Exponer lo mínimo posible de cada módulo.
+* Considerar que cada componente se pueda probar por si solo.
+
+== Mejores prácticas
+
+* Focus on the unique core of your app so it stands out from other apps.
+* Persist as much relevant and fresh data as possible.
+* Assign one data source to be the single source of truth.
+
 include::self.ad[]
