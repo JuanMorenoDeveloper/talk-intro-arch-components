@@ -14,8 +14,8 @@ Contenido de la presentación:
 
 * ¿Qué son los componentes de Arquitectura de Android?
 * ¿Cuál es la arquitectura recomendada para aplicaciones Android?
-* Lifecycle-aware
 * Live Data
+* ViewModel
 * Room
 
 ====
@@ -135,8 +135,13 @@ Room permite observar cambios en los datos de la base de datos, incluidas las co
 
 == Mejores prácticas
 
-* Focus on the unique core of your app so it stands out from other apps.
-* Persist as much relevant and fresh data as possible.
-* Assign one data source to be the single source of truth.
+* Evite el código repetitivo y enfóquese en el núcleo de la aplicación.
+* Persista los datos relevantes y recientes cada vez que sea sea posible.
+* Asigne una fuente de datos para que sea la única "fuente de verdad".
+
+== Conclusiones
+* Los componentes de arquitectura simplifican el desarrollo de aplicaciones Android, ofreciendo estructuras que manejan casos de uso comunes y un manejo seguro del ciclo de vida de la aplicación.
+
+* Con los componentes de arquitectura se pueden escribir aplicaciones más robustas y con menos fallas.
 
 include::self.ad[]
