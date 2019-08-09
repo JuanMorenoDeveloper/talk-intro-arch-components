@@ -109,14 +109,20 @@ Por ejemplo, ViewModel puede llamar a otros componentes para cargar los datos, y
 
 == LiveData
 
-**LiveData** es un objeto que monitorea (observa) cambios a nivel de datos. Los componentes de la aplicación pueden usarlo para monitorear cambios en los objetos sin crear dependencias explícitas y rígidas entre ellos. El componente LiveData también respeta el estado y ciclo de vida de los componentes de su aplicación (Activities, Fragmentos, Services), e incluye lógica de limpieza para evitar fugas de objetos y consumo excesivo de memoria.
-
-== Room
-
-**Room** es una librería de mapeo de objetos que proporciona persistencia de datos locales con un mínimo código repetitivo. En el momento de la compilación, valida cada consulta con respecto a su esquema de datos, por lo que las consultas SQL con problemas son detectadas en tiempo de compilación en lugar de fallas en el tiempo de ejecución. Room abstrae los detalles de implementación asociados al trabajo con consultas y tablas SQL.
+**LiveData** es un objeto que monitorea (observa) cambios a nivel de datos. Los componentes de la aplicación pueden usarlo para monitorear cambios en los objetos sin crear dependencias explícitas y rígidas entre ellos.
 
 [NOTE.speaker]
 ====
+ El componente LiveData también respeta el estado y ciclo de vida de los componentes de su aplicación (Activities, Fragmentos, Services), e incluye lógica de limpieza para evitar fugas de objetos y consumo excesivo de memoria.
+====
+
+== Room
+
+**Room** es una librería de mapeo de objetos que proporciona persistencia de datos locales con un mínimo código repetitivo. En el momento de la compilación, valida cada consulta con respecto a su esquema de datos, por lo que las consultas SQL con problemas son detectadas en tiempo de compilación en lugar de fallas en el tiempo de ejecución.
+
+[NOTE.speaker]
+====
+Room abstrae los detalles de implementación asociados al trabajo con consultas y tablas SQL.
 Room permite observar cambios en los datos de la base de datos, incluidas las colecciones y consultas join, exponiendo dichos cambios utilizando objetos LiveData. Maneja explícitamente restricciones de ejecución de threads, por ejemplo acceder al almacenamiento en el thread principal.
 ====
 
