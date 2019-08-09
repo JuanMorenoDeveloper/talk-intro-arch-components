@@ -78,10 +78,46 @@ Se debe considerar que no somos dueños de las implementaciones que hagamos de l
 
 == Manejar la UI desde el modelo
 
+* Es importante que la UI se maneje a partir del modelo (Persistente).
+* Los modelos son los encargados de manejar los datos de la aplicación.
+* Los modelos deben ser independientes de las vistas y de los componentes de la aplicación (No son afectados por el ciclo de vida de la aplicación).
 
+== Razones de un Modelo Persistente
 
+* Para que  los usuarios no pierdan datos cuando el SO destruya la aplicación o libere recursos.
+* Para que la aplicación continué trabajando cuando la conexión de red es inestable o no esta disponible.
 
+**Diseñar la aplicación usando clases que tengan responsabilidades definidas para la administración de los datos, la hace más testeable y consistente.**
 
+== Arquitectura recomendada
 
+image::final-architecture.png[background, size=auto]
+
+[NOTE.speaker]
+====
+Se debe considerar que no hay una arquitectura que se aplique para todos los casos, se sugiere esta arquitectura para iniciar los proyectos. Pero, arquitecturas diferentes pueden aplicar si siguen los mismos principios recomendados (Separación de intereses, Manejar la UI a partir del Modelo).
+====
+
+== ViewModel
+
+**ViewModel** proporciona los datos para un componente específico de la UI (Activities/Fragmentos). Contiene la lógica de negocio de manejo de datos para comunicarse con el modelo.
+
+[NOTE.speaker]
+====
+Por ejemplo, ViewModel puede llamar a otros componentes para cargar los datos, y puede reenviar las solicitudes de los usuarios para modificar los datos. ViewModel no conoce los componentes de la interfaz de usuario, por lo que no se ve afectado por los cambios de configuración, como la recreación de una actividad al rotar el dispositivo.
+====
+
+== LiveData
+
+**LiveData** es un objeto que monitorea (observa) cambios a nivel de datos. Los componentes de la aplicación pueden usarlo para monitorear cambios en los objetos sin crear dependencias explícitas y rígidas entre ellos. El componente LiveData también respeta el estado y ciclo de vida de los componentes de su aplicación (Activities, Fragmentos, Services), e incluye lógica de limpieza para evitar fugas de objetos y consumo excesivo de memoria.
+
+== Room
+
+**Room** es una librería de mapeo de objetos que proporciona persistencia de datos locales con un mínimo código repetitivo. En el momento de la compilación, valida cada consulta con respecto a su esquema de datos, por lo que las consultas SQL con problemas son detectadas en tiempo de compilación en lugar de fallas en el tiempo de ejecución. Room abstrae los detalles de implementación asociados al trabajo con consultas y tablas SQL.
+
+[NOTE.speaker]
+====
+Room permite observar cambios en los datos de la base de datos, incluidas las colecciones y consultas join, exponiendo dichos cambios utilizando objetos LiveData. Maneja explícitamente restricciones de ejecución de threads, por ejemplo acceder al almacenamiento en el thread principal.
+====
 
 include::self.ad[]
