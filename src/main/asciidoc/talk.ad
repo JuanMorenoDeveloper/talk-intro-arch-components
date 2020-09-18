@@ -113,7 +113,7 @@ Por ejemplo, ViewModel puede llamar a otros componentes para cargar los datos, y
 
 [NOTE.speaker]
 ====
- El componente LiveData también respeta el estado y ciclo de vida de los componentes de su aplicación (Activities, Fragmentos, Services), e incluye lógica de limpieza para evitar fugas de objetos y consumo excesivo de memoria.
+El componente `LiveData` también respeta el estado y ciclo de vida de los componentes de su aplicación (Activities, Fragmentos, Services), e incluye lógica de limpieza para evitar fugas de objetos y consumo excesivo de memoria.
 ====
 
 == Room
